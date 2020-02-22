@@ -3,9 +3,10 @@
 const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
-  name: {
+  username: {
     type: String,
-    trim: true
+    trim: true,
+    maxlength: 30
   },
   email: {
     type: String,
@@ -20,7 +21,8 @@ const schema = new mongoose.Schema({
     type: String
   },
   bio: {
-    type: String
+    type: String,
+    maxlength: 200
   }
 });
 
