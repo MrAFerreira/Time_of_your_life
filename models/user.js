@@ -15,6 +15,12 @@ const schema = new mongoose.Schema({
   },
   passwordHash: {
     type: String
+  },
+  picture: {
+    type: String
+  },
+  bio: {
+    type: String
   }
 });
 
