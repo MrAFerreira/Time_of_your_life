@@ -7,6 +7,7 @@ const User = require('./../models/user');
 const Path = require('./../models/path');
 
 const routeGuard = require('./../middleware/route-guard');
+const uploader = require('./../middleware/uploader');
 
 router.get('/edit', (req, res, next) => {
   res.render('profile/edit');
@@ -50,3 +51,21 @@ router.get('/:userId', (req, res, next) => {
 });
 
 module.exports = router;
+
+/* User.findById(userId)
+    .then(document => {
+      user = document;
+      if (document) {
+        return Path.find({ user: userId });
+      } else {
+        next(new Error('USER_NOT_FOUND'));
+      }
+    })
+    .then(paths => {
+      const isOwnProfile = req.user && req.user._id.toString() === user._id.toString();
+      res.render('profile/profile', { profile: user, paths, isOwnProfile });
+    })
+    .catch(error => {
+      next(error);
+    });
+ */
