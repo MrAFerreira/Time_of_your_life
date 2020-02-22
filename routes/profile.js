@@ -42,7 +42,7 @@ router.get('/:userId', (req, res, next) => {
     })
     .then(paths => {
       const isOwnProfile = req.user && req.user._id.toString() === user._id.toString();
-      res.render('profile/single', { profile: user, paths, isOwnProfile });
+      res.render('profile/profile', { profile: user, paths, isOwnProfile });
     })
     .catch(error => {
       next(error);
