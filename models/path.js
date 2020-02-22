@@ -35,14 +35,19 @@ const schema = new mongoose.Schema({
       'Wildlife'
     ]
   },
+  duration: {
+    type: String,
+    min: 0,
+    max: 24 * 60 * 60 * 1000
+  },
   // Probably we will need to create a model just for markers(map)
   markers: {
     type: String,
     required: true
   },
-  timestamps: {
-    createdAt: 'creationDate',
-    updatedAt: 'updateDate'
+  created: {
+    type: Date,
+    default: Date.now
   }
 });
 
