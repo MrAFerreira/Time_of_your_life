@@ -6,16 +6,18 @@ const schema = new mongoose.Schema({
   name: {
     type: String,
     trim: true,
-    required: true
+    required: true,
+    maxlength: 30
   },
   user: {
-    type: String,
-    trim: true,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user',
     required: true
   },
   description: {
     type: String,
-    trim: true
+    trim: true,
+    maxlength: 700
   },
   type: {
     type: [String],
