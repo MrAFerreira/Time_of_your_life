@@ -1,4 +1,4 @@
-<form action="/authentication/sign-up" method="POST">
+<form action="/authentication/sign-up" method="POST" enctype="multipart/form-data">
   <label for="input-username">Username</label>
   <input type="text" name="username" placeholder="Your username" id="input-username" />
   
@@ -8,8 +8,8 @@
   <label for="input-password">Password</label>
   <input type="password" name="password" id="input-password" placeholder="A Strong Password" />
   
-  <label for="picture">Picture</label>
-  <input type="file" accept="image/*" id="picture" name="picture">
+   <label for="picture">Picture</label>
+  <input type="file" accept="image/*" id="picture" name="picture"> 
   
   <label for="bio">Bio</label>
   <textarea name="bio" id="bio" placeholder="A brief description about yourself"></textarea>

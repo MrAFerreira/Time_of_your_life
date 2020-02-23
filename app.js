@@ -16,7 +16,7 @@ const indexRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
 const profileRouter = require('./routes/profile');
 
-const uploader = require('./middleware/uploader');
+//const uploader = require('./middleware/uploader');
 
 const app = express();
 
