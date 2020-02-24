@@ -89,9 +89,7 @@
     </style>
   </head>
   <body>
-    <input id="first-input" class="controls" type="text" placeholder="Search Box">
-    <input id="second-input" class="controls" type="text" placeholder="Search Box">
-    <input id="third-input" class="controls" type="text" placeholder="Search Box">
+    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
     <div id="map"></div>
     <script>
       // This example adds a search box to a map, using the Google Place Autocomplete
@@ -102,6 +100,8 @@
       // parameter when you first load the API. For example:
       // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
+      require('dotenv').config();
+
       function initAutocomplete() {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -33.8688, lng: 151.2195},
@@ -110,22 +110,9 @@
         });
 
         // Create the search box and link it to the UI element.
-        var firstInput = document.getElementById('first-input');
-        var firstSearchBox = new google.maps.places.SearchBox(input);
+        var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
         map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-        var secondInput = document.getElementById('second-input');
-        var secondSearchBox = new google.maps.places.SearchBox(input);
-        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-        var thirdInput = document.getElementById('third-input');
-        var thirdSearchBox = new google.maps.places.SearchBox(input);
-        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-
-
-
-
 
         // Bias the SearchBox results towards current map's viewport.
         map.addListener('bounds_changed', function() {
@@ -183,7 +170,7 @@
       }
 
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVMUHgpLylfcgMr7nUQspTqqE79ZSn16E&libraries=places&callback=initAutocomplete"
+    <script src="https://maps.googleapis.com/maps/api/js?key=GOOGLE_API_KEY&libraries=places&callback=initAutocomplete"
          async defer></script>
   </body>
 </html>
