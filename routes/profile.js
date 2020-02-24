@@ -17,21 +17,10 @@ router.post('/edit', routeGuard(true), uploader.single('picture'), (req, res, ne
   const userId = req.user._id;
   const { username, bio } = req.body;
 
-<<<<<<< HEAD
-  User.findByIdAndUpdate(userId, {
-    username,
-    bio,
-    picture: url
-  })
-
-    .then(() => {
-      res.redirect(`/profile/${userId}`);
-=======
   if (req.file == null || undefined) {
     User.findByIdAndUpdate(userId, {
       username,
       bio
->>>>>>> 8d844b57a737a34bcf60068e92f8e718999e134f
     })
       .then(() => {
         res.redirect('/');
@@ -78,21 +67,3 @@ router.get('/:userId', (req, res, next) => {
 });
 
 module.exports = router;
-
-/* User.findById(userId)
-    .then(document => {
-      user = document;
-      if (document) {
-        return Path.find({ user: userId });
-      } else {
-        next(new Error('USER_NOT_FOUND'));
-      }
-    })
-    .then(paths => {
-      const isOwnProfile = req.user && req.user._id.toString() === user._id.toString();
-      res.render('profile/profile', { profile: user, paths, isOwnProfile });
-    })
-    .catch(error => {
-      next(error);
-    });
- */

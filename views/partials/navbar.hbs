@@ -1,0 +1,16 @@
+<nav>
+      <a href="/">Home</a>
+      <a href="/path/create">Create Experience</a>
+      <a href="/path/searchpaths">Search Experience</a>
+
+      {{#if user}}
+        <!-- <a href="/">{{user.name}}'s Profile</a> -->
+        <form action="/authentication/sign-out" method="POST">
+          <button>Sign Out</button>
+        </form>
+        <a href="/profile/{{user._id}}">Profile</a>
+        {{else}}
+        <a href="/authentication/sign-in">Sign In</a>
+        <a href="/authentication/sign-up">Sign Up</a>
+      {{/if}}
+    </nav>
