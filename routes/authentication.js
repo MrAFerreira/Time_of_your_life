@@ -9,6 +9,10 @@ router.get('/sign-up', (req, res, next) => {
 });
 router.post('/sign-up', uploader.single('picture'), (req, res, next) => {
   const { username, email, password, bio } = req.body;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2594586018d79445de216fa721073c49c796fb21
   if (req.file == null || undefined) {
     bcryptjs
       .hash(password, 10)
