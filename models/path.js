@@ -42,11 +42,13 @@ const schema = new mongoose.Schema({
   },
   // Probably we will need to create a model just for markers(map)
   location: {
-    type: {
-      type: String,
-      default: 'Point'
+    title: {
+      type: [String]
+      //default: 'Point'
     },
-    coordinates: [
+    coordinates: {
+      type: [Number]
+    }[
       {
         type: Number,
         min: -180,

@@ -53,13 +53,19 @@ router.get('/sport', (req, res, next) => {
 
 router.get('/wildlife', (req, res, next) => {
   res.render('holdthemes/wildlife');
+});
+
 router.post('/create', routeGuard(true), bindUser, (req, res, next) => {
   const userId = req.user._id;
-  const { name, location } = req.body;
+  const { name, title, lat, lng } = req.body;
+  console.log(req.body);
   Path.create({
     user: userId,
     name,
-    location
+    location: {
+      type: title,
+      coordinates: [lng, lat]
+    }
   })
     .then(element => {
       res.redirect(`/`);
