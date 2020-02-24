@@ -1,6 +1,6 @@
 <h1>Edit Profile</h1>
 
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
   
   <label for="input-username">Username</label>
   <input type="text" name="username" placeholder="Your username" id="input-username" value="{{ user.username }}">
@@ -8,8 +8,8 @@
   <label for="bio">Bio</label>
   <textarea name="bio" id="bio" placeholder="A brief description about yourself" value="{{user.bio}}"></textarea>
 
-  <label for="input-picture">Picture</label>
-  <input type="file" accept="image/*" id="input-picture" name="picture">
+  <label for="picture">Picture</label>
+  <input type="file" accept="image/*" id="picture" name="picture">
 
   <button>Edit Profile</button>
 </form>
