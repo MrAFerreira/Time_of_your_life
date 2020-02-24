@@ -16,19 +16,32 @@ router.get('/edit', (req, res, next) => {
 router.post('/edit', routeGuard(true), uploader.single('picture'), (req, res, next) => {
   const userId = req.user._id;
   const { username, bio } = req.body;
-  const { url } = req.file;
 
-  User.findByIdAndUpdate(userId, {
-    username,
-    bio,
-    picture: url
-  })
-    .then(() => {
-      res.redirect('/');
+  if (req.file == null || undefined) {
+    User.findByIdAndUpdate(userId, {
+      username,
+      bio
     })
-    .catch(error => {
-      next(error);
-    });
+      .then(() => {
+        res.redirect('/');
+      })
+      .catch(error => {
+        next(error);
+      });
+  } else {
+    const { url } = req.file;
+    User.findByIdAndUpdate(userId, {
+      username,
+      bio,
+      picture: url
+    })
+      .then(() => {
+        res.redirect('/');
+      })
+      .catch(error => {
+        next(error);
+      });
+  }
 });
 
 router.get('/:userId', (req, res, next) => {
