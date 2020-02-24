@@ -16,8 +16,8 @@ router.get('/edit', (req, res, next) => {
 router.post('/edit', routeGuard(true), uploader.single('picture'), (req, res, next) => {
   const userId = req.user._id;
   const { username, bio } = req.body;
-  const { url } = req.file;
 
+<<<<<<< HEAD
   User.findByIdAndUpdate(userId, {
     username,
     bio,
@@ -26,10 +26,33 @@ router.post('/edit', routeGuard(true), uploader.single('picture'), (req, res, ne
 
     .then(() => {
       res.redirect(`/profile/${userId}`);
+=======
+  if (req.file == null || undefined) {
+    User.findByIdAndUpdate(userId, {
+      username,
+      bio
+>>>>>>> 8d844b57a737a34bcf60068e92f8e718999e134f
     })
-    .catch(error => {
-      next(error);
-    });
+      .then(() => {
+        res.redirect('/');
+      })
+      .catch(error => {
+        next(error);
+      });
+  } else {
+    const { url } = req.file;
+    User.findByIdAndUpdate(userId, {
+      username,
+      bio,
+      picture: url
+    })
+      .then(() => {
+        res.redirect('/');
+      })
+      .catch(error => {
+        next(error);
+      });
+  }
 });
 
 router.get('/:userId', (req, res, next) => {

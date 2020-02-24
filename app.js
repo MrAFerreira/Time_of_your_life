@@ -15,6 +15,7 @@ const bindUserToViewLocals = require('./middleware/bind-user-to-view-locals.js')
 const indexRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
 const profileRouter = require('./routes/profile');
+const pathRouter = require('./routes/path');
 
 //const uploader = require('./middleware/uploader');
 
@@ -60,6 +61,7 @@ app.use(bindUserToViewLocals);
 app.use('/', indexRouter);
 app.use('/authentication', authenticationRouter);
 app.use('/profile', profileRouter);
+app.use('/path', pathRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
