@@ -13,12 +13,15 @@ router.get('/edit', (req, res, next) => {
   res.render('profile/edit');
 });
 
-router.post('/edit', routeGuard(true), (req, res, next) => {
+router.post('/edit', routeGuard(true), uploader.single('picture'), (req, res, next) => {
   const userId = req.user._id;
-  const { name } = req.body;
+  const { username, bio } = req.body;
+  const { url } = req.file;
 
   User.findByIdAndUpdate(userId, {
-    name
+    username,
+    bio,
+    picture: url
   })
     .then(() => {
       res.redirect('/');
