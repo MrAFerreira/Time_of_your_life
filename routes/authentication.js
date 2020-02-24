@@ -1,19 +1,18 @@
 'use strict';
-
 const { Router } = require('express');
 const bcryptjs = require('bcryptjs');
 const User = require('./../models/user');
 const uploader = require('./../middleware/uploader');
-
 const router = new Router();
-
 router.get('/sign-up', (req, res, next) => {
   res.render('sign-up');
 });
-
 router.post('/sign-up', uploader.single('picture'), (req, res, next) => {
   const { username, email, password, bio } = req.body;
+<<<<<<< HEAD
+=======
 
+>>>>>>> 2594586018d79445de216fa721073c49c796fb21
   if (req.file == null || undefined) {
     bcryptjs
       .hash(password, 10)
@@ -54,11 +53,9 @@ router.post('/sign-up', uploader.single('picture'), (req, res, next) => {
       });
   }
 });
-
 router.get('/sign-in', (req, res, next) => {
   res.render('sign-in');
 });
-
 router.post('/sign-in', (req, res, next) => {
   let user;
   const { email, password } = req.body;
@@ -83,10 +80,8 @@ router.post('/sign-in', (req, res, next) => {
       next(error);
     });
 });
-
 router.post('/sign-out', (req, res, next) => {
   req.session.destroy();
   res.redirect('/');
 });
-
 module.exports = router;

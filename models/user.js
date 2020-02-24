@@ -19,7 +19,9 @@ const schema = new mongoose.Schema({
     type: String
   },
   picture: {
-    type: String
+    type: String,
+    default:
+      'https://res.cloudinary.com/duykugih7/image/upload/v1582549333/jan20/profiledefaultimage_pfl2a5.png'
   },
   bio: {
     type: String,

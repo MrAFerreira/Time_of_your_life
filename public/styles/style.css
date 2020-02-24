@@ -38,7 +38,7 @@ p {
   p:not(:last-child) {
     margin-bottom: 1rem; }
 
-img {
+#image-profile {
   width: 100%;
   max-width: 100%; }
 
@@ -68,5 +68,13 @@ textarea {
   margin: 0 auto;
   border: 1px solid gray;
   border-radius: 3px; }
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: space-around; }
 
 /*# sourceMappingURL=style.css.map */
