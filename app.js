@@ -17,9 +17,12 @@ const authenticationRouter = require('./routes/authentication');
 const profileRouter = require('./routes/profile');
 const pathRouter = require('./routes/path');
 
+const passEnvironmentVariablesToTemplates = require('./middleware/maps-client');
+
 //const uploader = require('./middleware/uploader');
 
 const app = express();
+app.use(passEnvironmentVariablesToTemplates);
 
 app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'hbs');

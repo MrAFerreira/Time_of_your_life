@@ -13,25 +13,46 @@ router.get('/sign-up', (req, res, next) => {
 
 router.post('/sign-up', uploader.single('picture'), (req, res, next) => {
   const { username, email, password, bio } = req.body;
-  const { url } = req.file;
-  bcryptjs
-    .hash(password, 10)
-    .then(hash => {
-      return User.create({
-        username,
-        email,
-        bio,
-        picture: url,
-        passwordHash: hash
+
+  if (req.file == null || undefined) {
+    bcryptjs
+      .hash(password, 10)
+      .then(hash => {
+        return User.create({
+          username,
+          email,
+          bio,
+          passwordHash: hash
+        });
+      })
+      .then(user => {
+        req.session.user = user._id;
+        res.redirect('/');
+      })
+      .catch(error => {
+        next(error);
       });
-    })
-    .then(user => {
-      req.session.user = user._id;
-      res.redirect('/');
-    })
-    .catch(error => {
-      next(error);
-    });
+  } else {
+    const { url } = req.file;
+    bcryptjs
+      .hash(password, 10)
+      .then(hash => {
+        return User.create({
+          username,
+          email,
+          bio,
+          picture: url,
+          passwordHash: hash
+        });
+      })
+      .then(user => {
+        req.session.user = user._id;
+        res.redirect('/');
+      })
+      .catch(error => {
+        next(error);
+      });
+  }
 });
 
 router.get('/sign-in', (req, res, next) => {
