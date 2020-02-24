@@ -23,8 +23,9 @@ router.post('/edit', routeGuard(true), uploader.single('picture'), (req, res, ne
     bio,
     picture: url
   })
+
     .then(() => {
-      res.redirect('/');
+      res.redirect(`/profile/${userId}`);
     })
     .catch(error => {
       next(error);
