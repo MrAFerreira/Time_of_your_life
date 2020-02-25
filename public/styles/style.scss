@@ -10,9 +10,8 @@ $grey: hsla(0, 0, 75%, 0.5);
 }
 
 body {
-  max-width: 52em;
   padding: 0 1em;
-  margin: 0 auto;
+  margin: 0;
   font-family: sans-serif;
   font-family: $font-sans;
   line-height: 2;
@@ -23,7 +22,14 @@ a {
   text-decoration: none;
 }
 
+.navbar {
+  padding: 10px 50px;
+}
+
 nav {
+  border-bottom: 1px solid gray;
+  box-shadow: 0 5px 5px grey;
+
   display: flex;
   a,
   button {
@@ -38,6 +44,15 @@ nav {
   }
 }
 
+.activities {
+  margin: auto !important;
+  max-width: 75%;
+  div {
+    text-align: center;
+    margin: 20px 0;
+  }
+}
+
 h1,
 h2,
 h3,
@@ -46,6 +61,7 @@ p {
   line-height: inherit;
   &:not(:last-child) {
     margin-bottom: 1rem;
+    margin-left: 3.5rem;
   }
 }
 
@@ -93,4 +109,95 @@ textarea {
   justify-content: space-around;
   align-items: center;
   align-content: space-around;
+}
+
+.img-themes {
+  border-radius: 10px;
+  border: 1px solid grey;
+  border-style: inset;
+  box-shadow: 0 15px 20px grey;
+}
+
+// map page css
+.displaysubtitle {
+  margin-bottom: 3rem;
+  margin-left: 3.5rem;
+}
+
+#map {
+  height: 80%;
+}
+/* Optional: Makes the sample page fill the window. */
+html,
+body {
+  height: 100%;
+  padding: 0;
+}
+#description {
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+}
+#infowindow-content .title {
+  font-weight: bold;
+}
+#infowindow-content {
+  display: none;
+}
+#map #infowindow-content {
+  display: inline;
+}
+.pac-card {
+  margin: 10px 10px 0 0;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+  font-family: Roboto;
+}
+#pac-container {
+  padding-bottom: 12px;
+  margin-right: 12px;
+}
+.pac-controls {
+  display: inline-block;
+  padding: 5px 11px;
+}
+.pac-controls label {
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300;
+}
+#pac-input {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 400px;
+}
+#map #pac-input {
+  z-index: 0;
+  position: absolute;
+  left: 195px;
+  top: 9px !important;
+  line-height: 39px;
+}
+
+#pac-input:focus {
+  border-color: #4d90fe;
+}
+#title {
+  color: #fff;
+  background-color: #4d90fe;
+  font-size: 25px;
+  font-weight: 500;
+  padding: 6px 12px;
+}
+#target {
+  width: 345px;
 }
