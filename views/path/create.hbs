@@ -44,9 +44,9 @@
             return;
           }
           // Clear out the old markers.
-         markers.forEach(function(marker) {
-           marker.setMap(null);
-          });
+        markers.forEach(function(marker) {
+          marker.setMap(null);
+         });
           markers = [];
           // For each place, get the icon, name and location.
           var bounds = new google.maps.LatLngBounds();
@@ -80,7 +80,7 @@
               markerList.innerHTML += `<input type="number" step="0.000000000000001" placeholder="location" name="lat" value="${element.position.lat()}">`
               markerList.innerHTML += `<input type="number" step="0.000000000000001" placeholder="location" name="lng" value="${element.position.lng()}">`
             });
-           console.log(permanentMarkers[0].position);
+           console.log(permanentMarkers[0]._id);
            let removeButon = document.getElementsByClassName('remove-button');
         for(var i = 0; i < removeButon.length; i++){
         removeButon[i].addEventListener('click', function(a) {

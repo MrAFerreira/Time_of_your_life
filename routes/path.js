@@ -79,9 +79,21 @@ router.post('/create', routeGuard(true), bindUser, (req, res, next) => {
   })
     .then(newPath => {
       console.log(newPath);
-      res.redirect('/');
+      res.redirect(`/path/${newPath._id}`);
     })
     .catch(error => next(error));
+});
+
+router.get('/:pathid', (req, res, next) => {
+  const pathid = req.params.pathid;
+  const google = res.locals.environment.GOOGLE_API_KEY;
+  Path.findById(pathid)
+    .then(value => {
+      res.render('path/single', { value, google });
+    })
+    .catch(error => {
+      next(error);
+    });
 });
 
 module.exports = router;
