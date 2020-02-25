@@ -3,6 +3,7 @@
 const { Router } = require('express');
 const User = require('./../models/user');
 const Path = require('./../models/path');
+const Marker = require('./../models/marker');
 const uploader = require('./../middleware/uploader');
 const routeGuard = require('./../middleware/route-guard');
 const bindUser = require('./../middleware/bind-user-to-view-locals');
@@ -57,13 +58,17 @@ router.get('/wildlife', (req, res, next) => {
 
 router.post('/create', routeGuard(true), bindUser, (req, res, next) => {
   const userId = req.user._id;
-  const { name, title, lat, lng } = req.body;
-  console.log(req.body);
+  const { name } = req.body;
+  const { title } = req.body;
+  const { lat } = req.body;
+  const { lng } = req.body;
+  console.log(title);
+
   Path.create({
     user: userId,
     name,
     location: {
-      type: title,
+      title,
       coordinates: [lng, lat]
     }
   })
