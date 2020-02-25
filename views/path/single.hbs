@@ -17,55 +17,20 @@
     </style>
   </head>
   <body>
-<h1>Single page view</h1>
-<p>{{value.location.length}}</p>
-<p>{{value.location.[0].lng}}</p>
+<h1>{{value.name}}</h1>
+<p>Type: {{value.type}}</p>
+<p> Path description:{{value.description}}</p>
+<p>Created by: {{value.author}}</p>
 <button id="submit">SUBMIT</button>
     <div id="map"></div>
     <script>
-      /* function initMap() {
-       var directionsService = new google.maps.DirectionsService;
- // var directionsRenderer = new google.maps.DirectionsRenderer;
-  var myLatLng = {lat: {{value.location.[0].lat}}, lng:parseInt({{value.location.[0].lng}})};
-  //directionsRenderer.setMap(map);
-
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 4,
-    center: myLatLng
-  });
-  
-
-  {{#each value.location}}
-  var marker = new google.maps.Marker({
-    position: {
-      lat: {{lat}},
-      lng:{{lng}}
-    },
-    map: map,
-    title: 'Hello World!'
-  });
-  {{/each}}
-
-  directionsService.route({
-    origin: {
-      lat: {{value.location.[0].lat}},
-      lng:{{value.location.[0].lng}}
-    },
-    destination: {
-      lat: {{value.location.[1].lat}},
-      lng:{{value.location.[1].lng}}
-    },
-    travelMode: 'DRIVING'
-    
-  });
-} */
 
 function initMap() {
   var directionsService = new google.maps.DirectionsService;
   var directionsRenderer = new google.maps.DirectionsRenderer;
   var myLatLng = {lat: {{value.location.[0].lat}}, lng:parseInt({{value.location.[0].lng}})};
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 6,
+    zoom: 10,
     center: myLatLng
   });
   directionsRenderer.setMap(map);
@@ -86,8 +51,29 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer) {
       });
     }
   }*/
-
+  let waypts = [];
+  let origin;
+  let destination;
+  if({{value.location.length}} > 2){
+    
   {{#each value.location}}
+  
+  waypts.push({
+    location: {
+      lat: {{lat}},
+      lng:{{lng}}
+    }
+  });
+  {{/each}}
+
+  origin = waypts.shift();
+  destination = waypts.pop();
+  }
+  
+  
+  
+
+  /*{{#each value.location}}
   var marker = new google.maps.Marker({
     position: {
       lat: {{lat}},
@@ -96,20 +82,23 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer) {
     map: map,
     title: 'Hello World!'
   });
-  {{/each}}
-
-  directionsService.route({
-    origin: {
+  {{/each}} 
+  
+  origin: {
        lat: {{value.location.[0].lat}},
       lng:{{value.location.[0].lng}}
     },
     destination: {
        lat: {{value.location.[1].lat}},
       lng:{{value.location.[1].lng}}
-    },
-    //waypoints: waypts,
+    },*/
+
+  directionsService.route({
+    origin: origin,
+    destination: destination,
+    waypoints: waypts,
     //optimizeWaypoints: true,
-    travelMode: 'DRIVING'
+    travelMode: 'WALKING'
   }, function(response, status) {
     if (status === 'OK') {
       directionsRenderer.setDirections(response);

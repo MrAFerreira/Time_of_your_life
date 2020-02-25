@@ -15,6 +15,7 @@ const schema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
+  author: String,
   description: {
     type: String,
     trim: true,
@@ -41,22 +42,6 @@ const schema = new mongoose.Schema({
     min: 0,
     max: 24 * 60 * 60 * 1000
   },
-  // Probably we will need to create a model just for markers(map)
-  /*   location: [
-    {
-      title: {
-        type: String,
-        default: 'Point'
-      },
-      coordinates: [
-        {
-          type: Number,
-          min: -180,
-          max: 180
-        }
-      ]
-    }
-  ], */
   location: [
     {
       title: {
