@@ -3,14 +3,21 @@
 const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
+  path: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Path'
+  },
   title: 'String',
-  coordinates: [
-    {
-      type: Number,
-      min: -180,
-      max: 180
-    }
-  ]
+  lat: {
+    type: Number,
+    min: -180,
+    max: 180
+  },
+  lng: {
+    type: Number,
+    min: -180,
+    max: 180
+  }
 });
 
 module.exports = mongoose.model('Marker', schema);

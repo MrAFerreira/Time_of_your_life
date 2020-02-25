@@ -62,23 +62,26 @@ router.post('/create', routeGuard(true), bindUser, (req, res, next) => {
   const { title } = req.body;
   const { lat } = req.body;
   const { lng } = req.body;
-  console.log(title);
+
+  const location = title.reduce((accum, value, index) => {
+    const data = {
+      title: value,
+      lat: lat[index],
+      lng: lng[index]
+    };
+    return (accum = [...accum, data]);
+  }, []);
 
   Path.create({
     user: userId,
     name,
-    location: {
-      title,
-      coordinates: [lng, lat]
-    }
+    location
   })
-    .then(element => {
-      res.redirect(`/`);
-      console.log(element);
+    .then(newPath => {
+      console.log(newPath);
+      res.redirect('/');
     })
-    .catch(error => {
-      next(error);
-    });
+    .catch(error => next(error));
 });
 
 module.exports = router;

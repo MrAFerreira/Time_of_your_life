@@ -97,8 +97,30 @@
       
     </ul> --}}
 
-    <form method="post" id="markerList">
+    {{!-- <form method="post" id="markerList">
       <input type="text" placeholder="Name of your Path" name="name">
+      <input type="text" placeholder="location" name="title1" id="title1"  >`
+      <input type="number" step="0.000000000000001" placeholder="location" name="lat1" id="lat1"/>
+      <input type="number" step="0.000000000000001" placeholder="location" name="lng1" id="lng1">
+      <input type="text" placeholder="location" name="title2" id="title2" >`
+      <input type="number" step="0.000000000000001" placeholder="location" name="lat2" id="lat2"/>
+      <input type="number" step="0.000000000000001" placeholder="location" name="lng2" id="lng2">
+      <input type="text" placeholder="location" name="title3" id="title3">`
+      <input type="number" step="0.000000000000001" placeholder="location" name="lat3" id="lat3" />
+      <input type="number" step="0.000000000000001" placeholder="location" name="lng3" id="lng3">
+      <button>Submit Path!</button> --}}
+
+      <form method="post" id="markerList">
+      <input type="text" placeholder="Name of your Path" name="name">
+      {{!-- <input type="text" placeholder="location" name="title1" id="title1"  >`
+      <input type="number" step="0.000000000000001" placeholder="location" name="lat1" id="lat1"/>
+      <input type="number" step="0.000000000000001" placeholder="location" name="lng1" id="lng1"> --}}
+      {{!-- <input type="text" placeholder="location" name="title2" id="title2" >`
+      <input type="number" step="0.000000000000001" placeholder="location" name="lat2" id="lat2"/>
+      <input type="number" step="0.000000000000001" placeholder="location" name="lng2" id="lng2">
+      <input type="text" placeholder="location" name="title3" id="title3">`
+      <input type="number" step="0.000000000000001" placeholder="location" name="lat3" id="lat3" />
+      <input type="number" step="0.000000000000001" placeholder="location" name="lng3" id="lng3"> --}}
       <button>Submit Path!</button>
    {{!--    
       <input type="number" placeholder="Latitude" name="latitude">
@@ -179,6 +201,10 @@
               markerList.innerHTML += `<input type="number" step="0.000000000000001" placeholder="location" name="lat" value="${element.position.lat()}">`
               markerList.innerHTML += `<input type="number" step="0.000000000000001" placeholder="location" name="lng" value="${element.position.lng()}">`
             });
+
+            markers.map(element => {
+
+            })
 
             
            console.log(permanentMarkers[0].position);

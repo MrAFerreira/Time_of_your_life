@@ -12,7 +12,7 @@ const schema = new mongoose.Schema({
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'user',
+    ref: 'User',
     required: true
   },
   description: {
@@ -42,7 +42,7 @@ const schema = new mongoose.Schema({
     max: 24 * 60 * 60 * 1000
   },
   // Probably we will need to create a model just for markers(map)
-  location: [
+  /*   location: [
     {
       title: {
         type: String,
@@ -56,7 +56,21 @@ const schema = new mongoose.Schema({
         }
       ]
     }
+  ], */
+  location: [
+    {
+      title: {
+        type: String
+      },
+      lat: {
+        type: Number
+      },
+      lng: {
+        type: Number
+      }
+    }
   ],
+
   created: {
     type: Date,
     default: Date.now
