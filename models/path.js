@@ -1,6 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
+//const Marker = require('./marker');
 
 const schema = new mongoose.Schema({
   name: {
@@ -41,19 +42,21 @@ const schema = new mongoose.Schema({
     max: 24 * 60 * 60 * 1000
   },
   // Probably we will need to create a model just for markers(map)
-  location: {
-    type: {
-      type: String,
-      default: 'Point'
-    },
-    coordinates: [
-      {
-        type: Number,
-        min: -180,
-        max: 180
-      }
-    ]
-  },
+  location: [
+    {
+      title: {
+        type: String,
+        default: 'Point'
+      },
+      coordinates: [
+        {
+          type: Number,
+          min: -180,
+          max: 180
+        }
+      ]
+    }
+  ],
   created: {
     type: Date,
     default: Date.now
