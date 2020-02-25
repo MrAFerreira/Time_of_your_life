@@ -58,15 +58,11 @@ router.get('/wildlife', (req, res, next) => {
 
 router.post('/create', routeGuard(true), bindUser, (req, res, next) => {
   const userId = req.user._id;
-<<<<<<< HEAD
-  const { name, location } = req.body;
-=======
   const { name } = req.body;
   const { title } = req.body;
   const { lat } = req.body;
   const { lng } = req.body;
   console.log(title);
->>>>>>> 20eb776ea90b2b148a12a669e2b5f1a795589d23
 
   Path.create({
     user: userId,
