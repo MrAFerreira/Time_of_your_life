@@ -26,7 +26,7 @@ const schema = new mongoose.Schema({
     required: true,
     enum: [
       'Gastronomic',
-      'Culture',
+      'Cultural',
       'Country',
       'City',
       'Sea',
