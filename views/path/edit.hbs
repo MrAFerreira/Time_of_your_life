@@ -1,0 +1,18 @@
+<h1>Edit Experience</h1>
+
+<form method="POST" enctype="multipart/form-data">
+  
+  <label for="name">Name</label>
+  <input type="text" name="name" placeholder="Your name" id="input-name" value="{{ path.name }}">
+
+  <label for="type">Type</label>
+  <textarea name="type" id="type" placeholder="Experience type" value="{{ path.type }}"></textarea>
+  
+  <label for="description">Description</label>
+  <textarea name="description" id="description" placeholder="Experience description" value="{{ path.description }}"></textarea>
+
+  <label for="picture">Picture</label>
+  <input type="file" accept="image/*" id="picture" name="picture">
+
+  <button>Save Experience</button>
+</form>

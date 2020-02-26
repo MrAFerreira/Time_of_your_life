@@ -24,8 +24,19 @@
     <img src="{{value.picture}}" alt="Path Picture" width="300px">
 
     <button id="submit">SUBMIT</button>
+
+    <button id="edit"><a href="/path/{{ value._id }}/edit">Edit Experience</a>
+</button>
+        {{#if isOwnExperience}}
+
+{{/if}}
+
+
+
   </section>
   <div id="map"></div>
+
+  
   
   <script>
 

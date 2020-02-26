@@ -22,6 +22,10 @@ router.get('/searchpaths', (req, res, next) => {
   res.render('path/searchpaths');
 });
 
+router.get('/edit', (req, res, next) => {
+  res.render('path/single');
+});
+
 //Themes routes
 router.get('/cultural', (req, res, next) => {
   Path.find({ type: 'Cultural' })
@@ -205,4 +209,63 @@ router.get('/:pathid', (req, res, next) => {
     });
 });
 
+router.get('/:pathId/edit', (req, res, next) => {
+  res.render('path/edit');
+});
+
+router.post('/:pathId/edit', uploader.single('picture'), (req, res, next) => {
+  const pathid = req.params.pathId;
+  console.log(pathid);
+  const { name, type, description } = req.body;
+
+  if (req.file == null || undefined) {
+    Path.findByIdAndUpdate(pathid, {
+      name,
+      type,
+      description
+    })
+      .then(() => {
+        res.redirect(`/path/${pathid}`);
+      })
+      .catch(error => {
+        next(error);
+      });
+  } else {
+    const { url } = req.file;
+    Path.findByIdAndUpdate(pathid, {
+      name,
+      type,
+      description,
+      picture: url
+    })
+      .then(() => {
+        res.redirect('/');
+      })
+      .catch(error => {
+        next(error);
+      });
+  }
+
+  router.get('/:pathid', (req, res, next) => {
+    const { pathid } = req.params;
+    let path;
+
+    User.findById(pathid)
+      .then(document => {
+        path = document;
+        if (document) {
+          return Path.find({ path: pathid });
+        } else {
+          next(new Error('USER_NOT_FOUND'));
+        }
+      })
+      .then(paths => {
+        const isOwnExperience = req.path && req.path._id.toString() === path._id.toString();
+        res.render('path/path', { path: path, paths, isOwnExperience });
+      })
+      .catch(error => {
+        next(error);
+      });
+  });
+});
 module.exports = router;
