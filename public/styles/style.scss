@@ -111,13 +111,6 @@ textarea {
   align-content: space-around;
 }
 
-.img-themes {
-  border-radius: 10px;
-  border: 1px solid grey;
-  border-style: inset;
-  box-shadow: 0 15px 20px grey;
-}
-
 // map page css
 .displaysubtitle {
   margin-bottom: 3rem;
@@ -219,42 +212,51 @@ body {
   height: 280px;
   background-position: center;
   background-size: cover;
+  border-radius: 10px;
+  border: 1px solid grey;
+  border-style: inset;
+  box-shadow: 0 15px 20px grey;
+}
+
+#themes-titles {
+  font-size: 20px;
+  font-weight: 200;
 }
 
 #culturalImg {
-  background-image: url('https://source.unsplash.com/400x400/?cultural');
+  background-image: url('https://source.unsplash.com/600x600/?cultural');
 }
 
 #countryImg {
-  background-image: url('https://source.unsplash.com/400x400/?country');
+  background-image: url('https://source.unsplash.com/600x600/?country');
 }
 
 #cityImg {
-  background-image: url('https://source.unsplash.com/400x400/?city');
+  background-image: url('https://source.unsplash.com/600x600/?city');
 }
 
 #seaImg {
-  background-image: url('https://source.unsplash.com/400x400/?sea');
+  background-image: url('https://source.unsplash.com/600x600/?sea');
 }
 
-#sportsImg {
-  background-image: url('https://source.unsplash.com/400x400/?sports');
+#sportImg {
+  background-image: url('https://source.unsplash.com/600x600/?sports');
 }
 
 #romanticImg {
-  background-image: url('https://source.unsplash.com/400x400/?romantic');
+  background-image: url('https://source.unsplash.com/600x600/?romantic');
 }
 
 #funImg {
-  background-image: url('https://source.unsplash.com/400x400/?fun');
+  background-image: url('https://source.unsplash.com/600x600/?fun');
 }
 
 #partyImg {
-  background-image: url('https://source.unsplash.com/400x400/?party');
+  background-image: url('https://source.unsplash.com/600x600/?party');
 }
 
 #wildlifeImg {
-  background-image: url('https://source.unsplash.com/400x400/?wildlife');
+  background-image: url('https://source.unsplash.com/600x600/?wildlife');
 }
 
 /* Clear floats after the columns */
