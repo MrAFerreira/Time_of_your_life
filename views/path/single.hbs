@@ -18,10 +18,20 @@
 <body>
   <section id="path-single">
     <h1>{{value.name}}</h1>
-    <p>Type: {{value.type}}</p>
-    <p> Path description:{{value.description}}</p>
+    <p><strong>{{value.type}} experience</strong></p>
+    <p>{{value.description}}</p>
     <p>Created by: {{value.author}}</p>
     <img src="{{value.picture}}" alt="Path Picture" width="300px">
+
+    <div>
+      <strong>Mode of Travel: </strong>
+      <select id="mode">
+        <option value="DRIVING">Driving</option>
+        <option value="WALKING">Walking</option>
+        <option value="BICYCLING">Bicycling</option>
+        <option value="TRANSIT">Transit</option>
+      </select>
+    </div>
 
     <button id="submit">SUBMIT</button>
   </section>
@@ -39,12 +49,18 @@ function initMap() {
   });
   directionsRenderer.setMap(map);
 
+  document.getElementById('mode').addEventListener('change', function() {
+  calculateAndDisplayRoute(directionsService, directionsRenderer);
+  });
+
+
   document.getElementById('submit').addEventListener('click', function() {
     calculateAndDisplayRoute(directionsService, directionsRenderer);
 });
 }
 
 function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+  let selectedMode = document.getElementById('mode').value;
   
   let waypts = [];
   let origin;
@@ -63,6 +79,17 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer) {
 
   origin = waypts.shift();
   destination = waypts.pop();
+  } else {
+    origin = {
+      location: {
+      lat: {{value.location.[0].lat}},
+      lng:{{value.location.[0].lng}}
+    }
+    };
+    destination =  {
+      lat: {{value.location.[1].lat}},
+      lng:{{value.location.[1].lng}}
+    }
   }
   
   
@@ -93,7 +120,7 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer) {
     destination: destination,
     waypoints: waypts,
     //optimizeWaypoints: true,
-    travelMode: 'WALKING'
+    travelMode: google.maps.TravelMode[selectedMode]
   }, function(response, status) {
     if (status === 'OK') {
       directionsRenderer.setDirections(response);

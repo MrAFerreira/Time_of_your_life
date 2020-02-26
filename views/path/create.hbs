@@ -99,11 +99,21 @@
               position: place.geometry.location
             }));
             markers.map(element =>{
-              markerList.innerHTML += `<input type="text" placeholder="location" name="title" value="${element.title}">`
-              markerList.innerHTML += `<input type="number" class="hidden" step="0.000000000000001" placeholder="location" name="lat" value="${element.position.lat()}">`
-              markerList.innerHTML += `<input type="number" class="hidden" step="0.000000000000001" placeholder="location" name="lng" value="${element.position.lng()}">`
-            });
-           console.log(permanentMarkers[0]._id);
+              markerList.insertAdjacentHTML("beforeend", `<input type="text" placeholder="location" name="title" value="${element.title}">`) 
+              markerList.insertAdjacentHTML("beforeend", `<input type="number" class="hidden" step="0.000000000000001" placeholder="location" name="lat" value="${element.position.lat()}">`)
+              markerList.insertAdjacentHTML("beforeend", `<input type="number" class="hidden" step="0.000000000000001" placeholder="location" name="lng" value="${element.position.lng()}">`)
+            }); 
+            /*markers.map(element =>{
+              titlein = document.createElement('titlein');
+               titlein.innerHTML = `<input type="text" placeholder="location" name="title" value="${element.title}">`;
+              latin = document.createElement('latin');
+               latin.innerHTML = `<input type="number" class="hidden" step="0.000000000000001" placeholder="location" name="lat" value="${element.position.lat()}">`;
+              lngin = document.createElement('lngin');
+               lngin.innerHTML = `<input type="number" class="hidden" step="0.000000000000001" placeholder="location" name="lng" value="${element.position.lng()}">`;
+              markerList.appendChild(titlein);
+              markerList.appendChild(latin);
+              markerList.appendChild(lngin);
+            }); */
            let removeButon = document.getElementsByClassName('remove-button');
         for(var i = 0; i < removeButon.length; i++){
         removeButon[i].addEventListener('click', function(a) {
