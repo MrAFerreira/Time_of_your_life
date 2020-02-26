@@ -219,6 +219,15 @@ body {
 #wildlifeImg {
   background-image: url("https://source.unsplash.com/600x600/?wildlife"); }
 
+#shoppingImg {
+  background-image: url("https://source.unsplash.com/600x600/?shopping"); }
+
+#animalsImg {
+  background-image: url("https://source.unsplash.com/600x600/?animals"); }
+
+#gastronomicImg {
+  background-image: url("https://source.unsplash.com/600x600/?gastronomic"); }
+
 /* Clear floats after the columns */
 .row-indexpage {
   padding: 0 50px;

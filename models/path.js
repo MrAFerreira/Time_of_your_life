@@ -34,7 +34,9 @@ const schema = new mongoose.Schema({
       'Romantic',
       'Fun',
       'Party',
-      'Wildlife'
+      'Wildlife',
+      'Animals',
+      'Shopping'
     ]
   },
   duration: {

@@ -119,6 +119,42 @@ router.get('/wildlife', (req, res, next) => {
     });
 });
 
+router.get('/gastronomic', (req, res, next) => {
+  res.render('holdthemes/gastronomic');
+
+  Path.find({ type: 'gastronomic' })
+    .then(value => {
+      res.render('holdthemes/gastronomic', { value });
+    })
+    .catch(error => {
+      next(error);
+    });
+});
+
+router.get('/shopping', (req, res, next) => {
+  res.render('holdthemes/shopping');
+
+  Path.find({ type: 'shopping' })
+    .then(value => {
+      res.render('holdthemes/shopping', { value });
+    })
+    .catch(error => {
+      next(error);
+    });
+});
+
+router.get('/animals', (req, res, next) => {
+  res.render('holdthemes/animals');
+
+  Path.find({ type: 'animals' })
+    .then(value => {
+      res.render('holdthemes/animals', { value });
+    })
+    .catch(error => {
+      next(error);
+    });
+});
+
 router.post('/create', routeGuard(true), bindUser, uploader.single('picture'), (req, res, next) => {
   const userId = req.user._id;
   const author = req.user.username;
