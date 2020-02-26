@@ -9,7 +9,7 @@ const bindUser = require('./../middleware/bind-user-to-view-locals');
 
 const router = new Router();
 
-router.get('/create', (req, res, next) => {
+router.get('/create', routeGuard(true), (req, res, next) => {
   const google = res.locals.environment.GOOGLE_API_KEY;
   res.render('path/create', { google });
 });
@@ -166,7 +166,7 @@ router.post('/create', routeGuard(true), bindUser, uploader.single('picture'), (
     return (accum = [...accum, data]);
   }, []);
 
-  if (req.file == null || undefined) {
+  if (req.file === null || undefined) {
     Path.create({
       user: userId,
       author,

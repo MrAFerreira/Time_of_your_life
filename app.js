@@ -19,7 +19,6 @@ const pathRouter = require('./routes/path');
 
 const passEnvironmentVariablesToTemplates = require('./middleware/maps-client');
 
-//const uploader = require('./middleware/uploader');
 const hbs = require('hbs');
 
 const app = express();
@@ -27,6 +26,10 @@ app.use(passEnvironmentVariablesToTemplates);
 
 app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
+const handlebarsHelperDate = require('helper-date');
+
+hbs.registerHelper('date', handlebarsHelperDate);
 
 hbs.registerPartials(join(__dirname, 'views/partials'));
 

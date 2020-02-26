@@ -3,7 +3,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/"><img src="https://res.cloudinary.com/duykugih7/image/upload/v1582758298/jan20/TYL_1_y6wtkp.png" alt="Logo" width="100px"></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/path/create">Create Experience</a>
@@ -17,6 +17,7 @@
         <form action="/authentication/sign-out" method="POST">
           <button>Sign Out</button>
         </form>
+
         <a href="/profile/{{user._id}}">Profile</a>
         {{else}}
         <a href="/authentication/sign-in">Sign In</a>
@@ -28,3 +29,4 @@
     </form> --}}
   </div>
 </nav>
+

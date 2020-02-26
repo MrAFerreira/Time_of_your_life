@@ -1,7 +1,7 @@
 window.addEventListener(
   'load',
   () => {
-    console.log('Ironmaker app started successfully!');
+    console.log('The time of your life!');
   },
   false
 );

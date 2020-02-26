@@ -20,7 +20,7 @@
     <h1>{{value.name}}</h1>
     <p><strong>{{value.type}} experience</strong></p>
     <p>{{value.description}}</p>
-    <p>Created by: {{value.author}}</p>
+    <p>Created by {{value.author}} on {{ date value.creationDate 'DD/MM/YYYY' }}</p>
     <img src="{{value.picture}}" alt="Path Picture" width="300px">
 
     <div>
@@ -127,7 +127,7 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer) {
     destination: {
        lat: {{value.location.[1].lat}},
       lng:{{value.location.[1].lng}}
-    },*/
+    },*/  
 
   directionsService.route({
     origin: origin,
