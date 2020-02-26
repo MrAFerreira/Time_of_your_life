@@ -4,20 +4,39 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <title>Places Search Box</title>
+    <style>
+      .hidden{
+        display: none;
+      }
+    </style>
   </head>
   <body>
     <input id="pac-input" class="controls" type="text" placeholder="Search Box">
     <div id="map"></div>
-   {{!--  <ul id="markerList">
-      
-    </ul> --}}
+ 
     <form method="post" id="markerList">
-      <input type="text" placeholder="Name of your Path" name="name">
       <button>Submit Path!</button>
-   {{!--    
-      <input type="number" placeholder="Latitude" name="latitude">
-      <input type="number" placeholder="Longitude" name="longitude"> --}}
+      <label for="name">Name your path:</label>
+      <input type="text" placeholder="Name of your Path" name="name" maxlength="30">
+      <label for="type">Choose a theme for your path:</label>
+      <select id="type" name="type">
+        <option value="Gastronomic">Gastronomic</option>
+        <option value="Culture">Culture</option>
+        <option value="Country">Country</option>
+        <option value="City">City</option>
+        <option value="Sea">Sea</option>
+        <option value="Sport">Sport</option>
+        <option value="Romantic">Romantic</option>
+        <option value="Fun">Fun</option>
+        <option value="Party">Party</option>
+        <option value="Wildlife">Wildlife</option>
+      </select>
+
+      <label for="description">Describe this path:</label>
+      <textarea id="description" name="description" maxlength="700"></textarea>
     </form>
+   
+   
     <script>
       function initAutocomplete() {
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -44,9 +63,9 @@
             return;
           }
           // Clear out the old markers.
-         markers.forEach(function(marker) {
-           marker.setMap(null);
-          });
+        markers.forEach(function(marker) {
+          marker.setMap(null);
+         });
           markers = [];
           // For each place, get the icon, name and location.
           var bounds = new google.maps.LatLngBounds();
@@ -77,10 +96,10 @@
             }));
             markers.map(element =>{
               markerList.innerHTML += `<input type="text" placeholder="location" name="title" value="${element.title}">`
-              markerList.innerHTML += `<input type="number" step="0.000000000000001" placeholder="location" name="lat" value="${element.position.lat()}">`
-              markerList.innerHTML += `<input type="number" step="0.000000000000001" placeholder="location" name="lng" value="${element.position.lng()}">`
+              markerList.innerHTML += `<input type="number" class="hidden" step="0.000000000000001" placeholder="location" name="lat" value="${element.position.lat()}">`
+              markerList.innerHTML += `<input type="number" class="hidden" step="0.000000000000001" placeholder="location" name="lng" value="${element.position.lng()}">`
             });
-           console.log(permanentMarkers[0].position);
+           console.log(permanentMarkers[0]._id);
            let removeButon = document.getElementsByClassName('remove-button');
         for(var i = 0; i < removeButon.length; i++){
         removeButon[i].addEventListener('click', function(a) {
