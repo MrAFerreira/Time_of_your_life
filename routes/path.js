@@ -25,34 +25,98 @@ router.get('/searchpaths', (req, res, next) => {
 //Themes routes
 router.get('/cultural', (req, res, next) => {
   res.render('holdthemes/cultural');
+
+  Path.find({ type: 'cultural' })
+    .then(value => {
+      res.render('holdthemes/cultural', { value });
+    })
+    .catch(error => {
+      next(error);
+    });
 });
 
 router.get('/city', (req, res, next) => {
   res.render('holdthemes/city');
+
+  Path.find({ type: 'city' })
+    .then(value => {
+      res.render('holdthemes/city', { value });
+    })
+    .catch(error => {
+      next(error);
+    });
 });
 
 router.get('/country', (req, res, next) => {
   res.render('holdthemes/country');
+
+  Path.find({ type: 'country' })
+    .then(value => {
+      res.render('holdthemes/country', { value });
+    })
+    .catch(error => {
+      next(error);
+    });
 });
 
 router.get('/party', (req, res, next) => {
   res.render('holdthemes/party');
+
+  Path.find({ type: 'party' })
+    .then(value => {
+      res.render('holdthemes/party', { value });
+    })
+    .catch(error => {
+      next(error);
+    });
 });
 
 router.get('/romantic', (req, res, next) => {
   res.render('holdthemes/romantic');
+
+  Path.find({ type: 'romantic' })
+    .then(value => {
+      res.render('holdthemes/romantic', { value });
+    })
+    .catch(error => {
+      next(error);
+    });
 });
 
 router.get('/sea', (req, res, next) => {
   res.render('holdthemes/sea');
+
+  Path.find({ type: 'sea' })
+    .then(value => {
+      res.render('holdthemes/sea', { value });
+    })
+    .catch(error => {
+      next(error);
+    });
 });
 
 router.get('/sport', (req, res, next) => {
   res.render('holdthemes/sport');
+
+  Path.find({ type: 'sport' })
+    .then(value => {
+      res.render('holdthemes/sport', { value });
+    })
+    .catch(error => {
+      next(error);
+    });
 });
 
 router.get('/wildlife', (req, res, next) => {
   res.render('holdthemes/wildlife');
+
+  Path.find({ type: 'wildlife' })
+    .then(value => {
+      res.render('holdthemes/wildlife', { value });
+    })
+    .catch(error => {
+      next(error);
+    });
 });
 
 router.post('/create', routeGuard(true), bindUser, (req, res, next) => {
