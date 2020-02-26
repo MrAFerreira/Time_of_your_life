@@ -24,9 +24,7 @@ router.get('/searchpaths', (req, res, next) => {
 
 //Themes routes
 router.get('/cultural', (req, res, next) => {
-  res.render('holdthemes/cultural');
-
-  Path.find({ type: 'cultural' })
+  Path.find({ type: 'Cultural' })
     .then(value => {
       res.render('holdthemes/cultural', { value });
     })
@@ -36,9 +34,7 @@ router.get('/cultural', (req, res, next) => {
 });
 
 router.get('/city', (req, res, next) => {
-  res.render('holdthemes/city');
-
-  Path.find({ type: 'city' })
+  Path.find({ type: 'City' })
     .then(value => {
       res.render('holdthemes/city', { value });
     })
@@ -48,9 +44,7 @@ router.get('/city', (req, res, next) => {
 });
 
 router.get('/country', (req, res, next) => {
-  res.render('holdthemes/country');
-
-  Path.find({ type: 'country' })
+  Path.find({ type: 'Country' })
     .then(value => {
       res.render('holdthemes/country', { value });
     })
@@ -60,9 +54,7 @@ router.get('/country', (req, res, next) => {
 });
 
 router.get('/party', (req, res, next) => {
-  res.render('holdthemes/party');
-
-  Path.find({ type: 'party' })
+  Path.find({ type: 'Party' })
     .then(value => {
       res.render('holdthemes/party', { value });
     })
@@ -72,9 +64,7 @@ router.get('/party', (req, res, next) => {
 });
 
 router.get('/romantic', (req, res, next) => {
-  res.render('holdthemes/romantic');
-
-  Path.find({ type: 'romantic' })
+  Path.find({ type: 'Romantic' })
     .then(value => {
       res.render('holdthemes/romantic', { value });
     })
@@ -84,9 +74,7 @@ router.get('/romantic', (req, res, next) => {
 });
 
 router.get('/sea', (req, res, next) => {
-  res.render('holdthemes/sea');
-
-  Path.find({ type: 'sea' })
+  Path.find({ type: 'Sea' })
     .then(value => {
       res.render('holdthemes/sea', { value });
     })
@@ -96,9 +84,7 @@ router.get('/sea', (req, res, next) => {
 });
 
 router.get('/sport', (req, res, next) => {
-  res.render('holdthemes/sport');
-
-  Path.find({ type: 'sport' })
+  Path.find({ type: 'Sport' })
     .then(value => {
       res.render('holdthemes/sport', { value });
     })
@@ -108,9 +94,7 @@ router.get('/sport', (req, res, next) => {
 });
 
 router.get('/wildlife', (req, res, next) => {
-  res.render('holdthemes/wildlife');
-
-  Path.find({ type: 'wildlife' })
+  Path.find({ type: 'Wildlife' })
     .then(value => {
       res.render('holdthemes/wildlife', { value });
     })
@@ -120,9 +104,7 @@ router.get('/wildlife', (req, res, next) => {
 });
 
 router.get('/gastronomic', (req, res, next) => {
-  res.render('holdthemes/gastronomic');
-
-  Path.find({ type: 'gastronomic' })
+  Path.find({ type: ['Gastronomic'] })
     .then(value => {
       res.render('holdthemes/gastronomic', { value });
     })
@@ -132,9 +114,7 @@ router.get('/gastronomic', (req, res, next) => {
 });
 
 router.get('/shopping', (req, res, next) => {
-  res.render('holdthemes/shopping');
-
-  Path.find({ type: 'shopping' })
+  Path.find({ type: 'Shopping' })
     .then(value => {
       res.render('holdthemes/shopping', { value });
     })
@@ -144,11 +124,19 @@ router.get('/shopping', (req, res, next) => {
 });
 
 router.get('/animals', (req, res, next) => {
-  res.render('holdthemes/animals');
-
-  Path.find({ type: 'animals' })
+  Path.find({ type: 'Animals' })
     .then(value => {
       res.render('holdthemes/animals', { value });
+    })
+    .catch(error => {
+      next(error);
+    });
+});
+
+router.get('/fun', (req, res, next) => {
+  Path.find({ type: 'Fun' })
+    .then(value => {
+      res.render('holdthemes/fun', { value });
     })
     .catch(error => {
       next(error);
