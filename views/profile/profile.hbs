@@ -6,7 +6,15 @@
 
 
 
+{{#each paths}}
+
+{{>routecard}}
+{{/each}}
+
+
+
 {{#if isOwnProfile}}
   <a href="/profile/edit">Edit Profile</a>
+  
 {{/if}}
 

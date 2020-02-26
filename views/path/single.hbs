@@ -21,6 +21,8 @@
 <p>Type: {{value.type}}</p>
 <p> Path description:{{value.description}}</p>
 <p>Created by: {{value.author}}</p>
+<img src="{{value.picture}}" alt="Path Picture" width="300px">
+
 <button id="submit">SUBMIT</button>
     <div id="map"></div>
     <script>
@@ -41,16 +43,7 @@ function initMap() {
 }
 
 function calculateAndDisplayRoute(directionsService, directionsRenderer) {
-  /*var waypts = [];
-  var checkboxArray = document.getElementById('waypoints');
-  for (var i = 0; i < checkboxArray.length; i++) {
-    if (checkboxArray.options[i].selected) {
-      waypts.push({
-        location: checkboxArray[i].value,
-        stopover: true
-      });
-    }
-  }*/
+  
   let waypts = [];
   let origin;
   let destination;
@@ -103,17 +96,6 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer) {
     if (status === 'OK') {
       directionsRenderer.setDirections(response);
       var route = response.routes[0];
-      /*var summaryPanel = document.getElementById('directions-panel');
-      summaryPanel.innerHTML = '';
-      // For each route, display summary information.
-      for (var i = 0; i < route.legs.length; i++) {
-        var routeSegment = i + 1;
-        summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +
-            '</b><br>';
-        summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
-        summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
-        summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
-      } */
     } else {
       window.alert('Directions request failed due to ' + status);
     }

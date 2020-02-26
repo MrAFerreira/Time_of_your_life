@@ -55,7 +55,7 @@ router.get('/wildlife', (req, res, next) => {
   res.render('holdthemes/wildlife');
 });
 
-router.post('/create', routeGuard(true), bindUser, (req, res, next) => {
+router.post('/create', routeGuard(true), bindUser, uploader.single('picture'), (req, res, next) => {
   const userId = req.user._id;
   const author = req.user.username;
   const { description } = req.body;
@@ -74,19 +74,35 @@ router.post('/create', routeGuard(true), bindUser, (req, res, next) => {
     return (accum = [...accum, data]);
   }, []);
 
-  Path.create({
-    user: userId,
-    author,
-    name,
-    location,
-    type,
-    description
-  })
-    .then(newPath => {
-      console.log(newPath);
-      res.redirect(`/path/${newPath._id}`);
+  if (req.file == null || undefined) {
+    Path.create({
+      user: userId,
+      author,
+      name,
+      location,
+      type,
+      description
     })
-    .catch(error => next(error));
+      .then(newPath => {
+        res.redirect(`/path/${newPath._id}`);
+      })
+      .catch(error => next(error));
+  } else {
+    const { url } = req.file;
+    Path.create({
+      user: userId,
+      author,
+      name,
+      location,
+      type,
+      description,
+      picture: url
+    })
+      .then(newPath => {
+        res.redirect(`/path/${newPath._id}`);
+      })
+      .catch(error => next(error));
+  }
 });
 
 router.get('/:pathid', (req, res, next) => {

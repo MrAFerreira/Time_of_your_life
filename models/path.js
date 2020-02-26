@@ -58,7 +58,7 @@ const schema = new mongoose.Schema({
   picture: {
     type: String,
     default:
-      'https://res.cloudinary.com/duykugih7/image/upload/v1582549333/jan20/profiledefaultimage_pfl2a5.png'
+      'https://res.cloudinary.com/duykugih7/image/upload/v1582712113/jan20/delfi-de-la-rua-vfzfavUZmfc-unsplash_hibew1.jpg'
   },
   created: {
     type: Date,
