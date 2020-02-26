@@ -11,9 +11,12 @@
     </style>
   </head>
   <body>
+
+  {{!-- <div class="map-form"> --}}
     <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-    <div id="map"></div>
- 
+    <div id="map" class="col-8" style="float: right;"></div>
+    <div class="col-4 controls">
+    <div class="form-style">
     <form method="post" id="markerList" enctype="multipart/form-data">
       <button>Submit Path!</button>
       <label for="name">Name your path:</label>
@@ -32,13 +35,16 @@
         <option value="Fun">Fun</option>
         <option value="Party">Party</option>
         <option value="Wildlife">Wildlife</option>
-        <option value="Party">Shopping</option>
-        <option value="Wildlife">Animals</option>
+        <option value="Shopping">Shopping</option>
+        <option value="Animals">Animals</option>
       </select>
 
       <label for="description">Describe this path:</label>
       <textarea id="description" name="description" maxlength="700"></textarea>
     </form>
+    </div>
+    </div>
+    {{!-- </div> --}}
 
 
 
