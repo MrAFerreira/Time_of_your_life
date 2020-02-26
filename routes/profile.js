@@ -5,6 +5,7 @@ const router = new Router();
 
 const User = require('./../models/user');
 const Path = require('./../models/path');
+const bindUser = require('./../middleware/bind-user-to-view-locals');
 
 const routeGuard = require('./../middleware/route-guard');
 const uploader = require('./../middleware/uploader');

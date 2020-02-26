@@ -55,7 +55,11 @@ const schema = new mongoose.Schema({
       }
     }
   ],
-
+  picture: {
+    type: String,
+    default:
+      'https://res.cloudinary.com/duykugih7/image/upload/v1582549333/jan20/profiledefaultimage_pfl2a5.png'
+  },
   created: {
     type: Date,
     default: Date.now
