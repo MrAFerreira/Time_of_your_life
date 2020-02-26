@@ -17,7 +17,7 @@ a {
 
 nav {
   border-bottom: 1px solid gray;
-  box-shadow: 0 5px 5px grey;
+  box-shadow: 0 5px 5px #a7a5a5;
   display: flex; }
   nav a,
   nav button {
@@ -100,7 +100,7 @@ textarea {
   margin-left: 3.5rem; }
 
 #map {
-  height: 80%; }
+  height: 50%; }
 
 /* Optional: Makes the sample page fill the window. */
 html,
@@ -174,5 +174,71 @@ body {
 
 #target {
   width: 345px; }
+
+.column {
+  float: left;
+  width: 25%;
+  padding: 10px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.testingImg {
+  width: 280px;
+  height: 280px;
+  background-position: center;
+  background-size: cover; }
+
+#culturalImg {
+  background-image: url("https://source.unsplash.com/400x400/?cultural"); }
+
+#countryImg {
+  background-image: url("https://source.unsplash.com/400x400/?country"); }
+
+#cityImg {
+  background-image: url("https://source.unsplash.com/400x400/?city"); }
+
+#seaImg {
+  background-image: url("https://source.unsplash.com/400x400/?sea"); }
+
+#sportsImg {
+  background-image: url("https://source.unsplash.com/400x400/?sports"); }
+
+#romanticImg {
+  background-image: url("https://source.unsplash.com/400x400/?romantic"); }
+
+#funImg {
+  background-image: url("https://source.unsplash.com/400x400/?fun"); }
+
+#partyImg {
+  background-image: url("https://source.unsplash.com/400x400/?party"); }
+
+#wildlifeImg {
+  background-image: url("https://source.unsplash.com/400x400/?wildlife"); }
+
+/* Clear floats after the columns */
+.row-indexpage {
+  padding: 0 50px;
+  background-color: rgba(218, 211, 211, 0.744); }
+  .row-indexpage .column {
+    text-align: center; }
+  .row-indexpage p {
+    max-width: 78%;
+    margin: auto; }
+
+.row-indexpage:after {
+  content: '';
+  display: table;
+  clear: both; }
+
+.index-page-column h4 {
+  margin-left: 3.5rem;
+  margin-bottom: 3rem;
+  color: rgba(0, 0, 0, 0.5); }
+
+.img-index {
+  max-width: 40px;
+  min-height: 40px; }
 
 /*# sourceMappingURL=style.css.map */
