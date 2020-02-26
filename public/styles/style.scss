@@ -102,7 +102,7 @@ textarea {
   margin-left: 3.5rem;
 }
 #map {
-  height: 50%;
+  height: 100%;
 }
 /* Optional: Makes the sample page fill the window. */
 html,
@@ -293,4 +293,15 @@ body {
     max-width: 200px;
     max-height: 200px;
   }
+}
+
+//css forms
+.form-style {
+  max-width: 500px;
+  padding: 10px 20px;
+  background: #f4f7f8;
+  margin: 10px auto;
+  padding: 20px;
+  background: #f4f7f8;
+  border-radius: 8px;
 }

@@ -5,11 +5,23 @@
   <label for="name">Name</label>
   <input type="text" name="name" placeholder="Your name" id="input-name" value="{{ path.name }}">
 
-  <label for="type">Type</label>
-  <textarea name="type" id="type" placeholder="Experience type" value="{{ path.type }}"></textarea>
+   <select id="type" name="type">
+        <option value="Gastronomic">Gastronomic</option>
+        <option value="Cultural">Cultural</option>
+        <option value="Country">Country</option>
+        <option value="City">City</option>
+        <option value="Sea">Sea</option>
+        <option value="Sport">Sport</option>
+        <option value="Romantic">Romantic</option>
+        <option value="Fun">Fun</option>
+        <option value="Party">Party</option>
+        <option value="Wildlife">Wildlife</option>
+        <option value="Shopping">Shopping</option>
+        <option value="Animals">Animals</option>
+      </select>
   
   <label for="description">Description</label>
-  <textarea name="description" id="description" placeholder="Experience description" value="{{ path.description }}"></textarea>
+  <textarea name="description" id="description" placeholder="Experience description" maxlength="700" value="{{ path.description }}"></textarea>
 
   <label for="picture">Picture</label>
   <input type="file" accept="image/*" id="picture" name="picture">
