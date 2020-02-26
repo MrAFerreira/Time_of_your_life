@@ -219,15 +219,6 @@ body {
 #wildlifeImg {
   background-image: url("https://source.unsplash.com/600x600/?wildlife"); }
 
-#shoppingImg {
-  background-image: url("https://source.unsplash.com/600x600/?shopping"); }
-
-#animalsImg {
-  background-image: url("https://source.unsplash.com/600x600/?animals"); }
-
-#gastronomicImg {
-  background-image: url("https://source.unsplash.com/600x600/?gastronomic"); }
-
 /* Clear floats after the columns */
 .row-indexpage {
   padding: 0 50px;
@@ -252,4 +243,35 @@ body {
   max-width: 40px;
   min-height: 40px; }
 
+<<<<<<< HEAD
+=======
+#profile-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  #profile-header img {
+    max-width: 200px;
+    max-height: 200px; }
+
+#profile-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; }
+
+#theme-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; }
+
+#path-single {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  #path-single img {
+    max-width: 200px;
+    max-height: 200px; }
+
+>>>>>>> 59e2eeeed29069230cda25cdec407bfb2b7897c2
 /*# sourceMappingURL=style.css.map */

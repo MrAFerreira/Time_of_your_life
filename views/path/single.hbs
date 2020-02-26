@@ -9,23 +9,25 @@
       }
       #map {
         height: 100%;
-        float: left;
         width: 70%;
         height: 100%;
       }
   
     </style>
   </head>
-  <body>
-<h1>{{value.name}}</h1>
-<p>Type: {{value.type}}</p>
-<p> Path description:{{value.description}}</p>
-<p>Created by: {{value.author}}</p>
-<img src="{{value.picture}}" alt="Path Picture" width="300px">
+<body>
+  <section id="path-single">
+    <h1>{{value.name}}</h1>
+    <p>Type: {{value.type}}</p>
+    <p> Path description:{{value.description}}</p>
+    <p>Created by: {{value.author}}</p>
+    <img src="{{value.picture}}" alt="Path Picture" width="300px">
 
-<button id="submit">SUBMIT</button>
-    <div id="map"></div>
-    <script>
+    <button id="submit">SUBMIT</button>
+  </section>
+  <div id="map"></div>
+  
+  <script>
 
 function initMap() {
   var directionsService = new google.maps.DirectionsService;
