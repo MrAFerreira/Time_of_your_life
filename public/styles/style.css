@@ -262,4 +262,13 @@ body {
   flex-wrap: wrap;
   justify-content: space-around; }
 
+#path-single {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  #path-single img {
+    max-width: 200px;
+    max-height: 200px; }
+
 /*# sourceMappingURL=style.css.map */

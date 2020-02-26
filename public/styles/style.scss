@@ -281,3 +281,16 @@ body {
   flex-wrap: wrap;
   justify-content: space-around;
 }
+
+//Individual path pages
+
+#path-single {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  img {
+    max-width: 200px;
+    max-height: 200px;
+  }
+}
