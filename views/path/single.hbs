@@ -35,10 +35,13 @@
 
     <button id="submit">SUBMIT</button>
 
-    <button id="edit"><a href="/path/{{ value._id }}/edit">Edit Experience</a>
-</button>
-        {{#if isOwnExperience}}
+{{#if isOwnExperience}}
+    <a href="/path/{{value._id}}/edit"><button id="edit">Edit Experience
+</button></a>  
 
+<form action="/path/{{value._id}}/delete" method="POST">
+  <button>Delete</button>
+</form>   
 {{/if}}
 
 

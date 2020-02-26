@@ -197,7 +197,7 @@ router.post('/create', routeGuard(true), bindUser, uploader.single('picture'), (
   }
 });
 
-router.get('/:pathid', (req, res, next) => {
+/* router.get('/:pathid', (req, res, next) => {
   const pathid = req.params.pathid;
   const google = res.locals.environment.GOOGLE_API_KEY;
   Path.findById(pathid)
@@ -207,10 +207,21 @@ router.get('/:pathid', (req, res, next) => {
     .catch(error => {
       next(error);
     });
-});
+}); */
 
 router.get('/:pathId/edit', (req, res, next) => {
   res.render('path/edit');
+});
+
+router.post('/:pathId/delete', (req, res, next) => {
+  const pathId = req.params.pathId;
+  Path.findByIdAndDelete(pathId)
+    .then(() => {
+      res.redirect(`/`);
+    })
+    .catch(error => {
+      next(error);
+    });
 });
 
 router.post('/:pathId/edit', uploader.single('picture'), (req, res, next) => {
@@ -245,27 +256,41 @@ router.post('/:pathId/edit', uploader.single('picture'), (req, res, next) => {
         next(error);
       });
   }
-
-  router.get('/:pathid', (req, res, next) => {
-    const { pathid } = req.params;
-    let path;
-
-    User.findById(pathid)
-      .then(document => {
-        path = document;
-        if (document) {
-          return Path.find({ path: pathid });
-        } else {
-          next(new Error('USER_NOT_FOUND'));
-        }
-      })
-      .then(paths => {
-        const isOwnExperience = req.path && req.path._id.toString() === path._id.toString();
-        res.render('path/path', { path: path, paths, isOwnExperience });
-      })
-      .catch(error => {
-        next(error);
-      });
-  });
 });
+
+router.get('/:pathid', bindUser, (req, res, next) => {
+  const pathid = req.params.pathid;
+  const google = res.locals.environment.GOOGLE_API_KEY;
+  const user = req.user;
+  Path.findById(pathid)
+    .then(value => {
+      const isOwnExperience = req.user && req.user._id.toString() === user._id.toString();
+      res.render('path/single', { value, google, isOwnExperience });
+    })
+    .catch(error => {
+      next(error);
+    });
+});
+
+/* router.get('/:pathid', (req, res, next) => {
+  const { pathid } = req.params;
+  let path;
+
+  User.findById(pathid)
+    .then(document => {
+      path = document;
+      if (document) {
+        return Path.find({ path: pathid });
+      } else {
+        next(new Error('USER_NOT_FOUND'));
+      }
+    })
+    .then(paths => {
+      const isOwnExperience = req.path && req.path._id.toString() === path._id.toString();
+      res.render('path/path', { path: path, paths, isOwnExperience });
+    })
+    .catch(error => {
+      next(error);
+    });
+}); */
 module.exports = router;
