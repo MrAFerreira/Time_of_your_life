@@ -243,6 +243,8 @@ body {
   max-width: 40px;
   min-height: 40px; }
 
+<<<<<<< HEAD
+=======
 #profile-header {
   display: flex;
   flex-direction: column;
@@ -271,4 +273,5 @@ body {
     max-width: 200px;
     max-height: 200px; }
 
+>>>>>>> 59e2eeeed29069230cda25cdec407bfb2b7897c2
 /*# sourceMappingURL=style.css.map */
