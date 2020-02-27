@@ -40,9 +40,7 @@ const schema = new mongoose.Schema({
     ]
   },
   duration: {
-    type: String,
-    min: 0,
-    max: 24 * 60 * 60 * 1000
+    type: String
   },
   location: [
     {

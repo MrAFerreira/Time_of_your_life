@@ -8,7 +8,7 @@ module.exports = userShouldBeAuthenticated => (req, res, next) => {
     if (req.user) {
       next();
     } else {
-      next(new Error('USER_NOT_AUTHENTICATED'));
+      res.redirect('/authentication/sign-in');
     }
   } else {
     if (req.user) {
