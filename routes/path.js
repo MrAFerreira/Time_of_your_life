@@ -250,7 +250,7 @@ router.post('/:pathId/edit', uploader.single('picture'), (req, res, next) => {
       picture: url
     })
       .then(() => {
-        res.redirect('/');
+        res.redirect(`/path/${pathid}`);
       })
       .catch(error => {
         next(error);

@@ -3,7 +3,19 @@ const { Router } = require('express');
 const bcryptjs = require('bcryptjs');
 const User = require('./../models/user');
 const uploader = require('./../middleware/uploader');
+const nodemailer = require('nodemailer');
 const router = new Router();
+const EMAIL = process.env.EMAIL;
+const PASSWORD = process.env.PASSWORD;
+
+const transporter = nodemailer.createTransport({
+  service: 'Gmail',
+  auth: {
+    user: EMAIL,
+    pass: PASSWORD
+  }
+});
+
 router.get('/sign-up', (req, res, next) => {
   res.render('sign-up');
 });
@@ -21,8 +33,14 @@ router.post('/sign-up', uploader.single('picture'), (req, res, next) => {
         });
       })
       .then(user => {
+        transporter.sendMail({
+          from: `The time of your life team  <${EMAIL}>`,
+          to: user.email,
+          subject: 'Welcome to the time of your life!',
+          html: `Hello <strong>${user.username}</strong>! Thanks for joining! Now is the time to discover new experiences, create your own and share them with the world. Have Fun! <br> - The TYL Team, Raquel & André `
+        });
         req.session.user = user._id;
-        res.redirect('/');
+        res.redirect('/path/searchpaths');
       })
       .catch(error => {
         next(error);
@@ -41,8 +59,14 @@ router.post('/sign-up', uploader.single('picture'), (req, res, next) => {
         });
       })
       .then(user => {
+        transporter.sendMail({
+          from: `The time of your life team  <${EMAIL}>`,
+          to: user.email,
+          subject: 'Welcome to the time of your life!',
+          html: `Hello <strong>${user.username}</strong>! Thanks for joining! Now is the time to discover new experiences, create your own and share them with the world. Have Fun! <br> - The TYL Team, Raquel & André `
+        });
         req.session.user = user._id;
-        res.redirect('/');
+        res.redirect('/path/searchpaths');
       })
       .catch(error => {
         next(error);
