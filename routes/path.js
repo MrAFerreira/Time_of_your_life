@@ -153,6 +153,7 @@ router.post('/create', routeGuard(true), bindUser, uploader.single('picture'), (
   const { description } = req.body;
   const { type } = req.body;
   const { name } = req.body;
+  const { duration } = req.body;
   const { title } = req.body;
   const { lat } = req.body;
   const { lng } = req.body;
@@ -173,7 +174,8 @@ router.post('/create', routeGuard(true), bindUser, uploader.single('picture'), (
       name,
       location,
       type,
-      description
+      description,
+      duration: duration.toString()
     })
       .then(newPath => {
         res.redirect(`/path/${newPath._id}`);
@@ -188,6 +190,7 @@ router.post('/create', routeGuard(true), bindUser, uploader.single('picture'), (
       location,
       type,
       description,
+      duration: duration.toString(),
       picture: url
     })
       .then(newPath => {
@@ -227,13 +230,14 @@ router.post('/:pathId/delete', (req, res, next) => {
 router.post('/:pathId/edit', uploader.single('picture'), (req, res, next) => {
   const pathid = req.params.pathId;
   console.log(pathid);
-  const { name, type, description } = req.body;
+  const { name, type, description, duration } = req.body;
 
   if (req.file == null || undefined) {
     Path.findByIdAndUpdate(pathid, {
       name,
       type,
-      description
+      description,
+      duration: duration.toString()
     })
       .then(() => {
         res.redirect(`/path/${pathid}`);
@@ -247,6 +251,7 @@ router.post('/:pathId/edit', uploader.single('picture'), (req, res, next) => {
       name,
       type,
       description,
+      duration: duration.toString(),
       picture: url
     })
       .then(() => {
