@@ -65,6 +65,9 @@ form {
   display: flex;
   flex-direction: column;
 }
+
+//searchpaths enfase
+
 input,
 textarea,
 button,
@@ -332,4 +335,9 @@ footer {
   position: fixed;
   bottom: 0;
   font-size: 0.8em;
+}
+
+#experience-map {
+  border-width: thick;
+  background-color: rgba(218, 211, 211, 0.744);
 }
