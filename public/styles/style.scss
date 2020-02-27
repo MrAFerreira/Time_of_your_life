@@ -38,6 +38,17 @@ nav {
     }
   }
 }
+.margin {
+  margin: 0 50px;
+}
+.otherActivites {
+  width: 33.3%;
+  margin: 50px 0;
+  text-align: center;
+  h5 {
+    margin-top: 20px;
+  }
+}
 .activities {
   margin: auto !important;
   max-width: 75%;
@@ -57,9 +68,18 @@ p {
     margin-left: 3.5rem;
   }
 }
+input {
+  padding: 10px !important;
+}
+.navMarg {
+  padding-right: 25px;
+}
 #image-profile {
   width: 100%;
   max-width: 100%;
+}
+.nav-links {
+  padding: 15px 10px !important;
 }
 form {
   display: flex;
@@ -316,12 +336,35 @@ body {
 //css forms
 .form-style {
   max-width: 500px;
-  padding: 10px 20px;
   background: #f4f7f8;
   margin: 10px auto;
-  padding: 20px;
+  padding: 5px 20px;
   background: #f4f7f8;
   border-radius: 8px;
+}
+
+.path-page {
+  position: relative;
+}
+
+.path-page .button button {
+  margin: 30px 30px;
+  min-width: 120px;
+}
+
+#submit {
+  margin-left: 50px;
+}
+
+.path-page .bottom strong {
+  margin: 0 50px;
+}
+
+.path-page img {
+  max-width: 650px;
+  position: absolute;
+  right: 50px;
+  top: 0;
 }
 
 //routecards
