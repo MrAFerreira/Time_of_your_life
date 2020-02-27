@@ -367,6 +367,10 @@ body {
   min-width: 120px;
 }
 
+.path-page .path-description {
+  margin-right: 40%;
+}
+
 #submit {
   margin-left: 50px;
 }
@@ -376,7 +380,7 @@ body {
 }
 
 .path-page img {
-  max-width: 650px;
+  max-width: 30%;
   max-height: 350px;
   position: absolute;
   right: 50px;
