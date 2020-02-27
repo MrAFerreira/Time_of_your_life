@@ -3,6 +3,7 @@
 const { Router } = require('express');
 const User = require('./../models/user');
 const Path = require('./../models/path');
+
 const uploader = require('./../middleware/uploader');
 const routeGuard = require('./../middleware/route-guard');
 const bindUser = require('./../middleware/bind-user-to-view-locals');
@@ -166,8 +167,27 @@ router.post('/create', routeGuard(true), bindUser, uploader.single('picture'), (
     };
     return (accum = [...accum, data]);
   }, []);
+  let picture;
+  if (req.file) {
+    const { url } = req.file;
+    picture = url;
+  }
+  Path.create({
+    user: userId,
+    author,
+    name,
+    location,
+    type,
+    description,
+    duration: duration.toString(),
+    picture
+  })
+    .then(newPath => {
+      res.redirect(`/path/${newPath._id}`);
+    })
+    .catch(error => next(error));
 
-  if (req.file === null || undefined) {
+  /*  if (req.file === null || undefined) {
     Path.create({
       user: userId,
       author,
@@ -196,8 +216,7 @@ router.post('/create', routeGuard(true), bindUser, uploader.single('picture'), (
       .then(newPath => {
         res.redirect(`/path/${newPath._id}`);
       })
-      .catch(error => next(error));
-  }
+      .catch(e rror => next(error));*/
 });
 
 /* router.get('/:pathid', (req, res, next) => {

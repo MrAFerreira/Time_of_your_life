@@ -16,6 +16,7 @@ const indexRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
 const profileRouter = require('./routes/profile');
 const pathRouter = require('./routes/path');
+const passport = require('passport');
 
 const passEnvironmentVariablesToTemplates = require('./middleware/maps-client');
 
@@ -66,6 +67,9 @@ app.use(
 
 // Initiate passport middleware before mounting routers and after mounting express-session
 require('./passport-googleAuthentication');
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(basicAuthenticationDeserializer);
 app.use(bindUserToViewLocals);
