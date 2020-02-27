@@ -17,9 +17,9 @@
     <div id="map" class="col-8" style="float: right;"></div>
     <div class="col-4 controls">
     <div class="form-style">
+    
     <form method="post" id="markerList" enctype="multipart/form-data">
-      <button>Submit Experience!</button>
-      <label for="name">Name:</label>
+      <label for="name" id="firstlabel">Name:</label>
       <input type="text" placeholder="Name of your Path" name="name" maxlength="30">
       <label for="input-photos">Picture:</label>
       <input type="file" name="picture" id="input-photos" accept="image/*"/>
@@ -43,6 +43,9 @@
       <textarea id="description" name="description" maxlength="700"></textarea>
       <label for="duration">Duration time: </label>
       <input id="duration" type="time" name="duration" value="00:00">
+      <div id="submit-create">
+      <button>Submit Experience!</button>
+      </div>
     </form>
     </div>
     </div>
@@ -67,7 +70,7 @@
         map.addListener('bounds_changed', function() {
           searchBox.setBounds(map.getBounds());
         });
-        let markerList = document.getElementById('markerList');
+        let markerList = document.getElementById('firstlabel');
         var markers = [];
         var permanentMarkers = [];
         // Listen for the event fired when the user selects a prediction and retrieve
@@ -109,22 +112,14 @@
               title: place.name,
               position: place.geometry.location
             }));
+
             markers.map(element =>{
-              markerList.insertAdjacentHTML("beforeend", `<input type="text" placeholder="location" name="title" value="${element.title}">`) 
-              markerList.insertAdjacentHTML("beforeend", `<input type="number" class="hidden" step="0.000000000000001" placeholder="location" name="lat" value="${element.position.lat()}">`)
-              markerList.insertAdjacentHTML("beforeend", `<input type="number" class="hidden" step="0.000000000000001" placeholder="location" name="lng" value="${element.position.lng()}">`)
+              markerList.insertAdjacentHTML("beforebegin", `<input type="text" id="experience-map" placeholder="location" name="title" value="${element.title} &#x1F4CD">`) 
+              markerList.insertAdjacentHTML("beforebegin", `<input type="number" class="hidden" step="0.000000000000001" placeholder="location" name="lat" value="${element.position.lat()}">`)
+              markerList.insertAdjacentHTML("beforebegin", `<input type="number" class="hidden" step="0.000000000000001" placeholder="location" name="lng" value="${element.position.lng()}">`)
             }); 
-            /*markers.map(element =>{
-              titlein = document.createElement('titlein');
-               titlein.innerHTML = `<input type="text" placeholder="location" name="title" value="${element.title}">`;
-              latin = document.createElement('latin');
-               latin.innerHTML = `<input type="number" class="hidden" step="0.000000000000001" placeholder="location" name="lat" value="${element.position.lat()}">`;
-              lngin = document.createElement('lngin');
-               lngin.innerHTML = `<input type="number" class="hidden" step="0.000000000000001" placeholder="location" name="lng" value="${element.position.lng()}">`;
-              markerList.appendChild(titlein);
-              markerList.appendChild(latin);
-              markerList.appendChild(lngin);
-            }); */
+        
+
            let removeButon = document.getElementsByClassName('remove-button');
         for(var i = 0; i < removeButon.length; i++){
         removeButon[i].addEventListener('click', function(a) {

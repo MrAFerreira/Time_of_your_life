@@ -302,4 +302,8 @@ footer {
   bottom: 0;
   font-size: 0.8em; }
 
+#experience-map {
+  border-width: thick;
+  background-color: rgba(218, 211, 211, 0.744); }
+
 /*# sourceMappingURL=style.css.map */
