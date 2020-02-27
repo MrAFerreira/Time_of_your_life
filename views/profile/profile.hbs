@@ -1,16 +1,16 @@
 <section id="profile-header">
   <h1>{{ profile.username }}</h1>
   <img src="{{profile.picture}}" alt="User's profile picture" id="testingImg">
-  <p>About me: {{profile.bio}}</p>
+  <p style="margin: 0">About me: {{profile.bio}}</p>
 
 {{#if isOwnProfile}}
-  <a href="/profile/edit" class="themes-titles">Edit Profile</a>
+  <a href="/profile/edit">Edit Profile</a>
 {{/if}}
 
 </section>
 
 
-<div id="profile-card-container">
+<div class="d-flex justify-content-between" id="profile-card-container">
 {{#each paths}}
 {{>routecard}}
 {{/each}}

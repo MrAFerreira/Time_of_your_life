@@ -5,20 +5,21 @@
       <li class="nav-item active">
         <a class="nav-link" href="/"><img src="https://res.cloudinary.com/duykugih7/image/upload/v1582758298/jan20/TYL_1_y6wtkp.png" alt="Logo" width="100px"></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/path/create">Create Experience</a>
+      <li class="nav-item nav-links">
+        <a href="/path/create">Create Experience</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/path/searchpaths">Experiences</a>
+      <li class="nav-item nav-links">
+        <a href="/path/searchpaths">Experiences</a>
       </li>
     </ul>
       {{#if user}}
         <!-- <a href="/">{{user.name}}'s Profile</a> -->
+      <div class="d-flex">
+        <a href="/profile/{{user._id}}" class="navMarg">Profile</a>
         <form action="/authentication/sign-out" method="POST">
           <button>Sign Out</button>
         </form>
-
-        <a href="/profile/{{user._id}}">Profile</a>
+      </div>
         {{else}}
         <a href="/authentication/sign-in">Sign In</a>
         <a href="/authentication/sign-up">Sign Up</a>
