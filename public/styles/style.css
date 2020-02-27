@@ -273,12 +273,17 @@ body {
 
 #path-single {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; }
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin: 2em 2em; }
   #path-single img {
-    max-width: 200px;
-    max-height: 200px; }
+    max-width: 18rem;
+    height: auto; }
+
+.single-map {
+  width: 100%;
+  max-height: 55%; }
 
 .form-style {
   max-width: 500px;
@@ -288,5 +293,13 @@ body {
   padding: 20px;
   background: #f4f7f8;
   border-radius: 8px; }
+
+.card-img-top {
+  height: fit-content; }
+
+footer {
+  position: fixed;
+  bottom: 0;
+  font-size: 0.8em; }
 
 /*# sourceMappingURL=style.css.map */

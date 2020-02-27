@@ -7,11 +7,7 @@
         margin: 0;
         padding: 0;
       }
-      #map {
-        height: 100%;
-        width: 70%;
-        height: 100%;
-      }
+    
   
     </style>
   </head>
@@ -19,9 +15,10 @@
   <section id="path-single">
     <h1>{{value.name}}</h1>
     <p><strong>{{value.type}} experience</strong></p>
+    <img src="{{value.picture}}" alt="Path Picture">
     <p>{{value.description}}</p>
     <p>Created by {{value.author}} on {{ date value.creationDate 'DD/MM/YYYY' }}</p>
-    <img src="{{value.picture}}" alt="Path Picture" width="300px">
+    
 
     <p>{{ value.duration }}</p>
 
@@ -38,7 +35,7 @@
     <button id="submit">SUBMIT</button>
 
 {{#if isOwnExperience}}
-    <a href="/path/{{value._id}}/edit"><button id="edit">Edit Experience
+    <a href="/path/{{value._id}}/edit"><button id="edit">Edit
 </button></a>  
 
 <form action="/path/{{value._id}}/delete" method="POST">
@@ -46,11 +43,11 @@
 </form>   
 {{/if}}
 
+</section>
 
-
-  </section>
-  <div id="map"></div>
-
+  
+  <div id="map" class="single-map"></div>
+  
   
   
   <script>
