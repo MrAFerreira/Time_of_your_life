@@ -63,6 +63,10 @@ app.use(
     })
   })
 );
+
+// Initiate passport middleware before mounting routers and after mounting express-session
+require('./passport-googleAuthentication');
+
 app.use(basicAuthenticationDeserializer);
 app.use(bindUserToViewLocals);
 
@@ -84,5 +88,7 @@ app.use((error, req, res, next) => {
   res.status(error.status || 500);
   res.render('error');
 });
+
+//passport
 
 module.exports = app;

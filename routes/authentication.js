@@ -7,6 +7,7 @@ const nodemailer = require('nodemailer');
 const router = new Router();
 const EMAIL = process.env.EMAIL;
 const PASSWORD = process.env.PASSWORD;
+const passport = require('passport');
 
 const transporter = nodemailer.createTransport({
   service: 'Gmail',
@@ -100,8 +101,19 @@ router.post('/sign-in', (req, res, next) => {
       next(error);
     });
 });
+
+router.get('/google', passport.authenticate('google', { scope: ['profile'] }));
+router.get(
+  '/google-callback',
+  passport.authenticate('google', { failureRedirect: '/' }),
+  (req, res) => {
+    res.redirect('/');
+  }
+);
+
 router.post('/sign-out', (req, res, next) => {
   req.session.destroy();
   res.redirect('/');
 });
+
 module.exports = router;
