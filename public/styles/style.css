@@ -197,6 +197,16 @@ body {
   align-items: center;
   justify-content: center; }
 
+.cardImg {
+  width: 230px;
+  height: 230px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 10px;
+  border: 1px solid grey;
+  border-style: inset;
+  box-shadow: 0 15px 20px grey; }
+
 .testingImg {
   width: 280px;
   height: 280px;
@@ -311,6 +321,8 @@ body {
   padding: 5px 20px;
   background: #f4f7f8;
   border-radius: 8px; }
+  .form-style h1 {
+    margin: 0 auto; }
 
 .path-page {
   position: relative; }
@@ -327,6 +339,7 @@ body {
 
 .path-page img {
   max-width: 650px;
+  max-height: 350px;
   position: absolute;
   right: 50px;
   top: 0; }

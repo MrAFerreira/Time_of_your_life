@@ -232,7 +232,14 @@ router.post('/create', routeGuard(true), bindUser, uploader.single('picture'), (
 }); */
 
 router.get('/:pathId/edit', (req, res, next) => {
-  res.render('path/edit');
+  const pathId = req.params.pathId;
+  Path.findById(pathId)
+    .then(value => {
+      res.render('path/edit', { value });
+    })
+    .catch(error => {
+      next(error);
+    });
 });
 
 router.post('/:pathId/delete', (req, res, next) => {

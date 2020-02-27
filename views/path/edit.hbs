@@ -1,10 +1,11 @@
-<h1>Edit Experience</h1>
 
-<form method="POST" enctype="multipart/form-data" class="margin">
-  
-  <label for="name">Name</label>
-  <input type="text" name="name" placeholder="Your name" id="input-name" value="{{ path.name }}">
 
+<form method="POST" enctype="multipart/form-data" class="form-style">
+  <h1>Edit Experience</h1>
+  <label for="name">Path Name</label>
+  <input type="text" name="name" placeholder="{{value.name}}" id="input-name" value="{{value.name}}">
+
+  <label for="type">Path Type</label>
    <select id="type" name="type">
         <option value="Gastronomic">Gastronomic</option>
         <option value="Cultural">Cultural</option>
@@ -21,11 +22,11 @@
       </select>
   
   <label for="description">Description</label>
-  <textarea name="description" id="description" placeholder="Experience description" maxlength="700" value="{{ path.description }}"></textarea>
+  <textarea name="description" id="description" placeholder="Experience description" maxlength="700">{{value.description }}</textarea>
 
   <label for="picture">Picture</label>
   <input type="file" accept="image/*" id="picture" name="picture">
-  <label for="duration">Duration time: </label>
-  <input id="duration" type="time" name="duration" value="00:00">
+  <label for="duration">Duration: </label>
+  <input id="duration" type="time" name="duration" value="{{value.duration}}">
   <button>Save Experience</button>
 </form> 
