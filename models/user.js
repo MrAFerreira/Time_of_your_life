@@ -18,6 +18,11 @@ const schema = new mongoose.Schema({
   passwordHash: {
     type: String
   },
+
+  googleID: {
+    type: String
+  },
+
   picture: {
     type: String,
     default:
