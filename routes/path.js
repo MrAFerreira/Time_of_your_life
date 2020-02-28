@@ -148,6 +148,10 @@ router.get('/fun', (req, res, next) => {
     });
 });
 
+router.get('/error', (req, res, next) => {
+  res.render('patherror');
+});
+
 router.post('/create', routeGuard(true), bindUser, uploader.single('picture'), (req, res, next) => {
   const userId = req.user._id;
   const author = req.user.username;
@@ -162,7 +166,9 @@ router.post('/create', routeGuard(true), bindUser, uploader.single('picture'), (
   console.log(title);
   console.log(title.length);
 
-  if ({ title }.length > 1) {
+  if (typeof title === 'string') {
+    res.redirect('/path/error');
+  } else {
     location = title.reduce((accum, value, index) => {
       const data = {
         title: value,
@@ -171,9 +177,6 @@ router.post('/create', routeGuard(true), bindUser, uploader.single('picture'), (
       };
       return (accum = [...accum, data]);
     }, []);
-  } else {
-    res.render('patherror');
-    return;
   }
 
   let picture;
