@@ -252,7 +252,7 @@ router.get('/:pathid', bindUser, (req, res, next) => {
   const user = req.user;
   Path.findById(pathid)
     .then(value => {
-      const isOwnExperience = req.user && req.user._id.toString() === user._id.toString();
+      const isOwnExperience = req.user && req.user._id.toString() === value.user.toString();
       res.render('path/single', { value, google, isOwnExperience });
     })
     .catch(error => {
