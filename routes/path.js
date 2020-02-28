@@ -158,15 +158,24 @@ router.post('/create', routeGuard(true), bindUser, uploader.single('picture'), (
   const { title } = req.body;
   const { lat } = req.body;
   const { lng } = req.body;
+  let location;
+  console.log(title);
+  console.log(title.length);
 
-  const location = title.reduce((accum, value, index) => {
-    const data = {
-      title: value,
-      lat: lat[index],
-      lng: lng[index]
-    };
-    return (accum = [...accum, data]);
-  }, []);
+  if ({ title }.length > 1) {
+    location = title.reduce((accum, value, index) => {
+      const data = {
+        title: value,
+        lat: lat[index],
+        lng: lng[index]
+      };
+      return (accum = [...accum, data]);
+    }, []);
+  } else {
+    res.render('patherror');
+    return;
+  }
+
   let picture;
   if (req.file) {
     const { url } = req.file;
