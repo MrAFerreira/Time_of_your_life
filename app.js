@@ -93,6 +93,4 @@ app.use((error, req, res, next) => {
   res.render('error');
 });
 
-//passport
-
 module.exports = app;

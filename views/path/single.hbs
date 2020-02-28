@@ -2,10 +2,8 @@
     <h1>{{value.name}}</h1>
     <p><strong>{{value.type}} experience</strong></p>
     <img src="{{value.picture}}" alt="Path Picture">
-    <p>{{value.description}}</p>
+    <p class="path-description">{{value.description}}</p>
     <p>Created by {{value.author}} on {{ date value.creationDate 'DD/MM/YYYY' }}</p>
-    
-
     <p> Approximate Duration: {{ value.duration }}</p>
 
     <div class="bottom">
@@ -20,12 +18,9 @@
 
     <div class="d-flex button">
         <button id="submit">SUBMIT</button>
-
         {{#if isOwnExperience}}
-        <a href="/path/{{value._id}}/edit"><button id="edit">Edit
-        </button></a>  
-
-        <form action="/path/{{value._id}}/delete" method="POST">
+        <a href="/path/{{value._id}}/edit"><button id="edit">Edit</button></a>  
+       <form action="/path/{{value._id}}/delete" method="POST">
           <button>Delete</button>
         </form>   
         {{/if}}
@@ -33,12 +28,9 @@
 
 </section>
 
-  
-  <div id="map" class="single-map"></div>
-  
-  
-  
-  <script>
+<div id="map" class="single-map"></div>
+    
+<script>
 
 function initMap() {
   var directionsService = new google.maps.DirectionsService;
@@ -93,34 +85,10 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer) {
     }
   }
   
-  
-  
-
-  /*{{#each value.location}}
-  var marker = new google.maps.Marker({
-    position: {
-      lat: {{lat}},
-      lng:{{lng}}
-    },
-    map: map,
-    title: 'Hello World!'
-  });
-  {{/each}} 
-  
-  origin: {
-       lat: {{value.location.[0].lat}},
-      lng:{{value.location.[0].lng}}
-    },
-    destination: {
-       lat: {{value.location.[1].lat}},
-      lng:{{value.location.[1].lng}}
-    },*/  
-
   directionsService.route({
     origin: origin,
     destination: destination,
     waypoints: waypts,
-    //optimizeWaypoints: true,
     travelMode: google.maps.TravelMode[selectedMode]
   }, function(response, status) {
     if (status === 'OK') {

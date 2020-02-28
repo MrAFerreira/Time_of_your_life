@@ -186,50 +186,7 @@ router.post('/create', routeGuard(true), bindUser, uploader.single('picture'), (
       res.redirect(`/path/${newPath._id}`);
     })
     .catch(error => next(error));
-
-  /*  if (req.file === null || undefined) {
-    Path.create({
-      user: userId,
-      author,
-      name,
-      location,
-      type,
-      description,
-      duration: duration.toString()
-    })
-      .then(newPath => {
-        res.redirect(`/path/${newPath._id}`);
-      })
-      .catch(error => next(error));
-  } else {
-    const { url } = req.file;
-    Path.create({
-      user: userId,
-      author,
-      name,
-      location,
-      type,
-      description,
-      duration: duration.toString(),
-      picture: url
-    })
-      .then(newPath => {
-        res.redirect(`/path/${newPath._id}`);
-      })
-      .catch(e rror => next(error));*/
 });
-
-/* router.get('/:pathid', (req, res, next) => {
-  const pathid = req.params.pathid;
-  const google = res.locals.environment.GOOGLE_API_KEY;
-  Path.findById(pathid)
-    .then(value => {
-      res.render('path/single', { value, google });
-    })
-    .catch(error => {
-      next(error);
-    });
-}); */
 
 router.get('/:pathId/edit', (req, res, next) => {
   const pathId = req.params.pathId;
@@ -303,25 +260,4 @@ router.get('/:pathid', bindUser, (req, res, next) => {
     });
 });
 
-/* router.get('/:pathid', (req, res, next) => {
-  const { pathid } = req.params;
-  let path;
-
-  User.findById(pathid)
-    .then(document => {
-      path = document;
-      if (document) {
-        return Path.find({ path: pathid });
-      } else {
-        next(new Error('USER_NOT_FOUND'));
-      }
-    })
-    .then(paths => {
-      const isOwnExperience = req.path && req.path._id.toString() === path._id.toString();
-      res.render('path/path', { path: path, paths, isOwnExperience });
-    })
-    .catch(error => {
-      next(error);
-    });
-}); */
 module.exports = router;
