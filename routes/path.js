@@ -163,10 +163,8 @@ router.post('/create', routeGuard(true), bindUser, uploader.single('picture'), (
   const { lat } = req.body;
   const { lng } = req.body;
   let location;
-  console.log(title);
-  console.log(title.length);
 
-  if (typeof title === 'string') {
+  if (typeof title === 'string' || typeof title === 'undefined') {
     res.redirect('/path/error');
   } else {
     location = title.reduce((accum, value, index) => {
