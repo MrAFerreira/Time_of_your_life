@@ -1,10 +1,11 @@
 <section id="profile-header">
   <h1>{{ profile.username }}</h1>
   <img src="{{profile.picture}}" alt="User's profile picture" id="testingImg">
-  <p style="margin: 0">About me: {{profile.bio}}</p>
+  <h5>About me:</h5>
+  <p class="profile-bio">{{profile.bio}}</p>
 
 {{#if isOwnProfile}}
-  <a href="/profile/edit">Edit Profile</a>
+  <a class="hover-link" href="/profile/edit"><button>Edit Profile</button></button></a>
 {{/if}}
 
 </section>
