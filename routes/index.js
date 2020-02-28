@@ -5,7 +5,7 @@ const router = new Router();
 const Path = require('./../models/path');
 
 router.get('/', (req, res, next) => {
-  Path.find({ author: 'Ferreira' })
+  Path.find()
     .limit(3)
     .then(value => {
       res.render('index', { value });
